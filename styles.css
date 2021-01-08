@@ -49,3 +49,8 @@ li {
   width: 80px;
   margin-right: 10px;
 }
+
+p {
+  text-align: center;
+  font-size: 14px;
+}
