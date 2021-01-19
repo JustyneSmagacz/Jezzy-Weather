@@ -72,12 +72,12 @@ p {
 .weather-forecast div {
   font-size: small;
 }
-
 .weather-forecast h3 {
   text-align: center;
   font-size: small;
   line-height: 15px;
 }
+
 .weather-forecast-temperature {
   text-align: center;
   font-size: 13px;
