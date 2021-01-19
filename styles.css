@@ -24,12 +24,19 @@ h1 {
   margin-bottom: 20px;
 }
 
-.container {
+.inner-container {
   background-color: #eff8ff;
   border: 1px solid #dadde1;
   padding: 15px;
   margin: 20px auto;
   border-radius: 20px;
+  max-width: 600px;
+}
+
+.outter-container {
+  border: 1px solid white;
+  margin: 20px auto;
+  padding: 15px;
   max-width: 600px;
 }
 
@@ -51,6 +58,7 @@ li {
 }
 
 p {
-  text-align: center;
+  text-align: left;
   font-size: 14px;
+  color: grey;
 }
