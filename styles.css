@@ -61,3 +61,28 @@ p {
   font-size: 14px;
   color: grey;
 }
+
+.weather-forecast img {
+  display: block;
+  margin: 0 auto;
+  height: 48px;
+  width: 48px;
+}
+
+.weather-forecast div {
+  font-size: small;
+}
+
+.weather-forecast h3 {
+  text-align: center;
+  font-size: small;
+  line-height: 15px;
+}
+.weather-forecast-temperature {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 400;
+  height: auto;
+  line-height: 15px;
+  white-space: nowrap;
+}
