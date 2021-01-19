@@ -50,6 +50,17 @@ function displayWeatherCondition(response) {
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#description").innerHTML =
     response.data.weather[0].main;
+
+  document.querySelector("#sunrise").innerHTML = response.data.sys.sunrise;
+  document.querySelector("#sunset").innerHTML = response.data.sys.sunset;
+  
+  let iconElement = document.querySelector("#icon");
+iconElement.setAttribute(
+  "src", 
+  `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data[0].description);
+
 }
 
 //search results
@@ -68,7 +79,6 @@ function handleSubmit(event) {
 function searchLocation(position) {
   let apiKey = "4007b2458c5f1847227a709637cbc50d";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
-
   axios.get(apiUrl).then(displayWeatherCondition);
 }
 
@@ -90,6 +100,7 @@ function convertToCelsius(event) {
   temperatureElement.innerHTML = 4;
 }
 
+
 //action - date and time
 
 let dateElement = document.querySelector("#date");
@@ -100,6 +111,16 @@ let timeElement = document.querySelector("#time");
 let currentTime = new Date();
 timeElement.innerHTML = formatTime(currentTime);
 
+//action - sunrise sunset
+
+//let sunriseElement = document.querySelector("#sunrise");
+//let currentDate = new Date();
+//sunriseElement.innerHTML = formatDate(currentDate);
+
+//let sunsetElement = document.querySelector("#sunset");
+//let currentTime = new Date();
+//sunsetElement.innerHTML = formatTime(currentTime);
+
 //action - convert temperatures
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
@@ -107,6 +128,7 @@ fahrenheitLink.addEventListener("click", convertToFahrenheit);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsius);
+
 
 //action - search results
 
@@ -117,5 +139,8 @@ let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", getCurrentLocation);
 
 searchCity("Madrid");
+
+
+
 
 
