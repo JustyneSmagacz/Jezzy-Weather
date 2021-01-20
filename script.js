@@ -1,8 +1,23 @@
 // time and date
-function formatDate(date) {
+function formatTime(timestamp) {
+  let date = new Date(timestamp);
+  let hours = time.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = time.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  return `${hours}:${minutes}`;
+}
+
+function formatDate(timestamp) {
+  let date = new Date (timestamp)
   let dayIndex = date.getDay();
-  let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
   let day = days[dayIndex];
+  let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
 
   let monthIndex = date.getMonth();
   let months = [
@@ -24,18 +39,22 @@ function formatDate(date) {
   return `${day}, ${date.getDate()} ${month}`;
 }
 
-function formatTime(time) {
-  let hours = time.getHours();
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
-  let minutes = time.getMinutes();
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
-
-  return `${hours}:${minutes}`;
+function formatDay(timestamp) {
+  let now = new Date(timestamp);
+  let days = [
+    "Sun",
+    "Mon",
+    "Tues",
+    "Wed",
+    "Thurs",
+    "Fri",
+    "Sat",
+  ];
+  let currentDay = days[now.getDay()];
+  return `${currentDay}`;
 }
+
+
 
 //weather, city and country
 function displayWeatherCondition(response) {
@@ -67,20 +86,17 @@ function dipsplayForecast(response){
   forecastElement.innerHTML = null;
   let forecast = null;
 
-  for (let index = 0; index < 5; indext++) {
-    forecast = response.data.list[index];
+  for (let index = 1; index < 5; index++) {
+    forecast = response.data.daily[index];
+
     forecastElement.innerHTML += `
     <div class="col-2">
-        <h6>
-        ${formatHours(forecast.dt * 1000)}
-        </h6>
-        <img 
-        src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" />
+        <h6>${formatTime(forecast.dt * 1000)}</h6>
+         <img src="http://openweathermap.org/img/wn/${
+                forecast.weather[0].icon
+              }@2x.png" alt="${forecast.weather[0].icon}" />
         <div class="weather-forecast-temperature">
-        <strong>
-        ${Math.round(forecast.main.temp_max)}°
-        </strong>| 
-        ${Math.round(forecast.main.temp_min)}°
+        <strong>${Math.round(forecast.main.temp.max)}°</strong>| ${Math.round(forecast.main.temp.min)}°
         </div>
     </div>
     `;
@@ -130,6 +146,18 @@ function convertToCelsius(event) {
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
+//sunrise sunset
+
+function sunriseSunsetTime(timestamp) {
+let sunriseSunset = new Date(timestamp);
+let hours = sunriseSunset.getHours();
+if (hours < 10) {
+  hours = `0${hours}`;
+}
+let minutes= sunriseSunset.getMinutes();
+if (minutes = `0${minutes}`)
+}
+return `${hours}:${minutes}`;
 
 //action - date and time
 
@@ -143,13 +171,8 @@ timeElement.innerHTML = formatTime(currentTime);
 
 //action - sunrise sunset
 
-//let sunriseElement = document.querySelector("#sunrise");
-//let currentDate = new Date();
-//sunriseElement.innerHTML = formatDate(currentDate);
-
-//let sunsetElement = document.querySelector("#sunset");
-//let currentTime = new Date();
-//sunsetElement.innerHTML = formatTime(currentTime);
+document.querySelector("#sunrise").innerHTML = sunriseSunsetTime (response.data.sys.sunrise * 1000);
+document.querySelector("#sunset").innerHTML = sunriseSunsetTime (response.data.sys.sunset * 1000);
 
 //action - convert temperatures
 
@@ -160,7 +183,6 @@ fahrenheitLink.addEventListener("click", convertToFahrenheit);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsius);
-
 
 
 //action - search results
