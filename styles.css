@@ -1,6 +1,8 @@
 body {
   font-family: "Ubuntu", sans-serif;
   color: #1976d2;
+  background-image: url("https://images.pexels.com/photos/5232105/pexels-photo-5232105.jpeg");
+  background-size: 100%;
 }
 
 h1 {
@@ -25,17 +27,16 @@ h1 {
 }
 
 .inner-container {
-  background-color: #eff8ff;
-  border: 1px solid #dadde1;
-  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 3px solid white;
+  padding: 20px;
   margin: 20px auto;
   border-radius: 20px;
-  max-width: 600px;
+  max-width: 650px;
 }
 
 .outter-container {
-  border: 1px solid white;
-  margin: 20px auto;
+  margin: 10px auto;
   padding: 15px;
   max-width: 600px;
 }
@@ -59,14 +60,14 @@ li {
 p {
   text-align: left;
   font-size: 14px;
-  color: grey;
+  color: white;
 }
 
 .weather-forecast img {
   display: block;
   margin: 0 auto;
-  height: 48px;
-  width: 48px;
+  height: 55px;
+  width: 55px;
 }
 
 .weather-forecast div {
@@ -85,4 +86,13 @@ p {
   height: auto;
   line-height: 15px;
   white-space: nowrap;
+}
+
+.link {
+  color: white;
+}
+
+.link:hover {
+  color: #eb6e4c;
+  text-decoration: none;
 }
